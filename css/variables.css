@@ -1,0 +1,21 @@
+:root {
+
+    --theme-color-selected: #00BFFF;
+    --theme-color-lightBlue:rgb(221, 239, 221);
+    --theme-color-primary: #20232a;
+    --theme-color-secondary: #61dafb;
+  
+    --main-bg-color: #e2e1e0;
+    --main-font-family: 'Roboto', sans-serif;
+    --main-min-height: 40rem;
+  
+    --main-header-height: 6.5rem;
+    --main-header-height-sm: 15rem;
+    --main-footer-height: 12rem;
+  
+    --svg-icon-fill-color: var(--theme-color-secondary);
+  
+    --footer-color: #ffffff;
+
+  }
+  

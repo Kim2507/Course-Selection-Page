@@ -1,0 +1,103 @@
+.app-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: var(--main-min-height);
+    max-width: 1000px;
+    min-width: 320px;
+    margin: auto;
+    background-color: var(--main-bg-color);
+  }
+
+  .app-container .app-header{
+    text-align: center;
+    padding: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: grey;
+  }
+
+  .app-container .app-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: absolute;
+    top: var(--main-header-height);
+    left: 0;
+    right: 0;
+    bottom: var(--main-footer-height);
+    overflow: auto;
+  }
+
+  .app-content .courses-grid{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    border: solid black;
+    height: 300px;
+    width: 200px;
+    overflow: auto;
+    font-size: small;
+
+  }
+
+  .app-container .app-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--main-footer-height);
+    color: black;
+    background-color: grey;
+  }
+
+  .courses-grid .grid-item {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:fit-content;
+    border: solid grey;
+  }
+  
+  
+
+  .grid-item:focus{
+    /* background-color: var(--theme-color-selected); */
+  }
+
+  .app-footer .total-credit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 20px;
+  }
+
+  .app-footer button{
+    background-color: cadetblue;
+    font-size: medium;
+    padding: 5px;
+  }
+
+  .app-footer .credit-counter{
+    display:inline-block;
+  }
+  .flex-footer{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+
+
+
+
+
+  

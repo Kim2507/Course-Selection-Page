@@ -39,6 +39,7 @@ class CourseView{
         courseType.innerText = course.required? 'Compulsory' : 'Elective';
 
         const courseCredit = document.createElement("div");
+        courseCredit.classList.add("credit");
         courseCredit.innerText = course.credit;
 
         courseElem.appendChild(courseName);
@@ -76,6 +77,7 @@ class CourseController{
             this.view.renderCourses(courses);
         });
         this.courseSelected();
+        this.updateCreditCounter();
     }
 
     courseSelected(){
@@ -87,6 +89,7 @@ class CourseController{
             if(target.classList.contains('grid-item')){
                 console.log(target);
                 if(target.id === 'unselected'){
+                    // change the color
                     // store the prev background first 
                     const prevBackground = target.style.backgroundColor
                     target.id = 'selected';
@@ -103,15 +106,25 @@ class CourseController{
         })
     }
 
-    totalCreditCounter(){
-        
-    }
+    updateCreditCounter(){
+        this.view.coursesList.addEventListener('click',(e) =>{
+            const target = e.target;
+            if(target.classList.contains('grid-item')){
+                courseCredit = target.querySelector(".credit");
+                courseCreditValue = parseInt(courseCredit.innerText);
+                counter = document.querySelector(".credit-counter");
+                counterValue = parseInt(counter.innerText);
+                if (target.id === 'selected'){
+                    counterValue  += courseCreditValue;
+                    console.log(counterValue);
+                }else if(target.id === 'unselected'){
+                    counterValue  -= courseCreditValue;
+                }
 
-    updateCounter(change) {
-        const counter = document.getElementById('credit-counter');
-        const currentCount = parseInt(counter.innerText);
-        const selectedCount = this.view.coursesList.querySelectorAll('.grid-item#selected').length;
-        counter.innerText = currentCount + (change * selectedCount);
+                counter.innerText = counterValue.toString();
+            }
+
+        })
     }
       
 }

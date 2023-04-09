@@ -117,7 +117,9 @@ class CourseController{
                 let counterValue = parseInt(counter.innerText);
                 if (target.id === 'selected'){
                     counterValue  += courseCreditValue;
-                    this.checkValidCredits(counterValue);
+                    if(!this.checkValidCredits(counterValue)){
+                        counterValue -= courseCreditValue;
+                    }
                     // console.log(counterValue);
                 }else if(target.id === 'unselected'){
                     counterValue  -= courseCreditValue;
@@ -129,7 +131,11 @@ class CourseController{
     }
 
     checkValidCredits(credits){
-        if(credits > 18) window.alert("You can only choose up to 18 credits in one semester");
+        if(credits > 18){
+            window.alert("You can only choose up to 18 credits in one semester");
+            return false;
+        }
+        return true;
     }
 
     
@@ -148,6 +154,7 @@ function openPopup(){
         // loop thru the whole available bucket and check which courses are selected
         const availableBucket = document.querySelectorAll(".courses-grid .grid-item");
         Array.from(availableBucket).forEach((course) =>{
+            
             if(course.id === 'selected'){
                 // first remove the darkblue color of the
                 course.id = 'unselected';
@@ -155,6 +162,7 @@ function openPopup(){
                 course.style.backgroundColor = prevBackgroundColor;
                 course.removeAttribute('prev-background-color');
                 // put courses to the selected bucket
+                // const selectedCourse = createCourseElement(course);
                 const selectedCourse = course.cloneNode(true);
                 selectedBucket.appendChild(selectedCourse);
             }

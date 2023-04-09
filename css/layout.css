@@ -7,6 +7,10 @@
     min-width: 320px;
     margin: auto;
     background-color: var(--main-bg-color);
+    /* background-color: #D9AFD9; */
+    /* background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%); */
+
+
   }
 
   .app-container .app-header{
@@ -34,7 +38,7 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    border: solid black;
+    border: solid 1px black;
     height: 300px;
     width: 200px;
     overflow: auto;
@@ -64,7 +68,7 @@
     align-items: center;
     width: 100%;
     height:fit-content;
-    border: solid grey;
+    border: solid 0.5px grey;
   }
   
   

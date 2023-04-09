@@ -15,7 +15,7 @@ class CourseModel{
 
 class CourseView{
     constructor(){
-        this.coursesList = document.querySelector(".courses-grid");
+        this.coursesList = document.querySelectorAll(".courses-grid")[0];
     }
 
     appendCourse(course){
@@ -83,11 +83,11 @@ class CourseController{
     courseSelected(){
         this.view.coursesList.addEventListener('click',(e) =>{
             const target = e.target;
-            console.log(target);
+            // console.log(target);
             // if target id is  unselected then select and turn color to dark blue
             // else if target id is selected then remove color;
             if(target.classList.contains('grid-item')){
-                console.log(target);
+                // console.log(target);
                 if(target.id === 'unselected'){
                     // change the color
                     // store the prev background first 
@@ -109,24 +109,59 @@ class CourseController{
     updateCreditCounter(){
         this.view.coursesList.addEventListener('click',(e) =>{
             const target = e.target;
+            
             if(target.classList.contains('grid-item')){
-                courseCredit = target.querySelector(".credit");
-                courseCreditValue = parseInt(courseCredit.innerText);
-                counter = document.querySelector(".credit-counter");
-                counterValue = parseInt(counter.innerText);
+                let courseCredit = target.querySelector(".credit");
+                let courseCreditValue = parseInt(courseCredit.innerText);
+                let counter = document.querySelector(".credit-counter");
+                let counterValue = parseInt(counter.innerText);
                 if (target.id === 'selected'){
                     counterValue  += courseCreditValue;
-                    console.log(counterValue);
+                    this.checkValidCredits(counterValue);
+                    // console.log(counterValue);
                 }else if(target.id === 'unselected'){
                     counterValue  -= courseCreditValue;
                 }
-
                 counter.innerText = counterValue.toString();
             }
 
         })
     }
+
+    checkValidCredits(credits){
+        if(credits > 18) window.alert("You can only choose up to 18 credits in one semester");
+    }
+
+    
       
 }
 
 const app = new CourseController(new CourseModel(), new CourseView());
+
+function openPopup(){
+    const credits = document.querySelector(".credit-counter");
+    const confirmed = window.confirm("You have chosen " + `${credits.textContent}` + " credits for this semester. You cannot change once you submit. Do you want to confirm?");
+    if(confirmed){
+         /**Add courses to selected bucket */
+         // take the selected bucket element 
+         const selectedBucket = document.querySelectorAll(".courses-grid")[1];
+        // loop thru the whole available bucket and check which courses are selected
+        const availableBucket = document.querySelectorAll(".courses-grid .grid-item");
+        Array.from(availableBucket).forEach((course) =>{
+            if(course.id === 'selected'){
+                // first remove the darkblue color of the
+                course.id = 'unselected';
+                const prevBackgroundColor = course.getAttribute('prev-background-color');
+                course.style.backgroundColor = prevBackgroundColor;
+                course.removeAttribute('prev-background-color');
+                // put courses to the selected bucket
+                const selectedCourse = course.cloneNode(true);
+                selectedBucket.appendChild(selectedCourse);
+            }
+        });
+    }else{
+        console.log("Canceled");
+    }
+}
+
+

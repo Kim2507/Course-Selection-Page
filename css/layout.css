@@ -6,11 +6,9 @@
     max-width: 1000px;
     min-width: 320px;
     margin: auto;
-    background-color: var(--main-bg-color);
-    /* background-color: #D9AFD9; */
-    /* background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%); */
-
-
+    /* background-color: var(--main-bg-color); */
+    background-color: #52ACFF;
+    background-image: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);
   }
 
   .app-container .app-header{

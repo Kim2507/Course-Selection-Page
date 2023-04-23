@@ -23,6 +23,11 @@ class CourseView{
         this.coursesList.appendChild(courseElem);
     }
 
+    setColor(courseId, courseElem){
+        if(courseId % 2 == 0) courseElem.style.backgroundColor = 'white';
+        else courseElem.style.backgroundColor = '#FFDB01';
+    }
+
     createCourseElement(course){
         const courseElem = document.createElement("div");
         courseElem.classList.add("grid-item");
@@ -30,7 +35,7 @@ class CourseView{
         courseElem.setAttribute("course-id",course.courseId);
 
         if(course.courseId % 2 == 0) courseElem.style.backgroundColor = 'white';
-        else courseElem.style.backgroundColor = 'light blue';
+        else courseElem.style.backgroundColor = '#FFDB01';
 
         const courseName = document.createElement("p");
         courseName.innerText = course.courseName;
@@ -48,11 +53,6 @@ class CourseView{
       
         return courseElem;
     }
-
-    // selectedCourse(course){
-    //     if(course)
-
-    // }
 
     renderCourses(courses){
         this.coursesList.innerText="";

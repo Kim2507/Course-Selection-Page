@@ -1,13 +1,4 @@
-# SEP-FRE-OA
+# Run JS Server 
 
-This is a repo to record the SEP-REACT-TRAINING assignments.
+Terminal : npm run start / nom run json:server
 
-## Fork this repo
-
-## Clone your forked repo:
-
-## Create your feature branch to implement the assignment.
-
-- git branch by_your_name/hw
-- git checkout by_your_name/hw
-- implement the assignment under this feature branch.
